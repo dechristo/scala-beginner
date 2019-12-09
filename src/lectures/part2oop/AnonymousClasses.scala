@@ -8,7 +8,7 @@ object AnonymousClasses extends App{
   val funnyAnimal: Animal = new Animal {
     override def eat: Unit = println("hahahahahahah")
   }
-  
+
   /*
    Equivalent to:
 
