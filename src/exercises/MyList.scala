@@ -102,18 +102,10 @@ object ListTest2 extends App {
   println(listOfIntegers.toString)
   println(listOfStrings.toString)
 
-  println(listOfIntegers.map(new MyTransformer[Int, Int] {
-    override def transform(elem: Int): Int = elem * 2
-    }).toString)
-
-  println(listOfIntegers.filter(new MyPredicate[Int] {
-    override def test(elem: Int): Boolean = elem % 2 == 0
-  }).toString)
-
+  println(listOfIntegers.map(n => n * 2).toString)
+  println(listOfIntegers.filter(n => n % 2 == 0).toString)
+  println(listOfIntegers.flatMap(elem => new Cons(elem, new Cons(elem + 2, Empty))).toString)
   println((listOfIntegers ++ anotherListOfIntegers).toString)
-  println(listOfIntegers.flatMap(new MyTransformer[Int, MyList[Int]] {
-    override def transform(elem: Int): MyList[Int] = new Cons(elem, new Cons(elem + 2, Empty))
-  }).toString)
 
   println(cloneListOfIntegers == listOfIntegers)
 }
